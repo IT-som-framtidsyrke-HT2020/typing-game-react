@@ -18,7 +18,7 @@ const Results = ({ correctResults, wrongResults, countCorrect }) => {
           </p>
         </div>
 
-        <div className="wrongREsults">
+        <div className="wrongResults">
           <p>
             {wrongResults.map((wrongWord, index) => (
               <div className="row" key={index}>

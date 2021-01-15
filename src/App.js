@@ -25,8 +25,22 @@ function App() {
 
   let randomWord = Math.floor(Math.random() * Words.length);
 
-  const handleInput = () => {
-    console.log("Handle input");
+  const checkAnswer = () => {
+    if (inputValue.trim() === newWord) {
+      setCorrectResults((prevCorrect) => [...prevCorrect, newWord]);
+      setCountCorrect((prevCorrect) => prevCorrect + 1);
+      return;
+    }
+    setWrongResults((prevWrong) => [...prevWrong, inputValue]);
+  };
+
+  const handleInput = (e) => {
+    // meaning if we hit enter and our input value is not completely empty
+    if (e.charCode === 13 && inputValue.trim() !== "") {
+      checkAnswer();
+      setNewWord(word[randomWord]);
+      setInputValue("");
+    }
   };
 
   return (
