@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Words from "./components/Words";
 import Container from "./components/Container";
+import Typeracer from "./components/Typeracer";
 
 import "./index.css";
 
@@ -21,9 +22,24 @@ function App() {
   // state for our input
   const [animation, setAnimation] = useState(null);
 
+  let randomWord = Math.floor(Math.random() * Words.length);
+
+  const handleInput = () => {
+    console.log("Handle input");
+  };
+
   return (
     <div className="typing-game">
-      <Container></Container>
+      <Container>
+        <Typeracer
+          newWord={newWord}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          disabled={disabled}
+          time={time}
+          handleInput={handleInput}
+        />
+      </Container>
     </div>
   );
 }
