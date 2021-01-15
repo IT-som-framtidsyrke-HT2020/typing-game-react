@@ -8,10 +8,10 @@ function App() {
   const [newWord, setNewWord] = useState(word[0]);
   // first word in words array is initial state value
   const [disabled, setDisabled] = useState(true);
-  const [currentResults, setCurrentResults] = useState([]);
+  const [correctResults, setCorrectResults] = useState([]);
   // display current result
   const [wrongResults, setWrongResults] = useState([]);
-  const [countCurrent, setCountCurrent] = useState(0);
+  const [countCorrect, setCountCorrect] = useState(0);
   const [time, setTime] = useState(30);
   const [inputValue, setInputValue] = useState("");
   // state for our input
