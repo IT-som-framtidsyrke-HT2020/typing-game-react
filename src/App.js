@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Words from "./components/Words";
 import Container from "./components/Container";
 import Typeracer from "./components/Typeracer";
+import Results from "./components/Results";
 
 import "./index.css";
 
@@ -40,6 +41,11 @@ function App() {
           handleInput={handleInput}
         />
       </Container>
+      <Results
+        correctResults={correctResults}
+        wrongResults={wrongResults}
+        countCorrect={countCorrect}
+      />
     </div>
   );
 }
