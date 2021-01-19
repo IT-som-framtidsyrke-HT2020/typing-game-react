@@ -73,6 +73,11 @@ function App() {
     }
   }, [disabled, time]);
 
+  // useEffect that will run when the page loads
+  useEffect(() => {
+    setNewWord(word[randomWord]);
+  }, []);
+
   return (
     <div className="typing-game">
       <Container>
