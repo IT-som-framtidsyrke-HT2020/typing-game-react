@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Words from "./components/Words";
 import Container from "./components/Container";
 import Typeracer from "./components/Typeracer";
@@ -43,6 +43,36 @@ function App() {
     }
   };
 
+  const handleStart = () => {
+    // set disabled to false cause its true atm
+    setDisabled(!disabled);
+
+    // clear correct and wrong answers when starting a new game
+    setCorrectResults([]);
+    setWrongResults([]);
+
+    // also reset the count of correct answers
+    setCountCorrect(0);
+
+    // clear input field
+    setInputValue("");
+  };
+
+  useEffect(() => {
+    if (time <= 30 && time !== 0 && disabled === false) {
+      setTimeout(() => setTime((prevTime) => prevTime - 1), 1000);
+    } else if (disabled) {
+      setTime(30);
+      setAnimation(null);
+    } else if (time === 0) {
+      setDisabled(true);
+    }
+
+    if (time <= 10) {
+      setAnimation("scaleNumber 2s infinite");
+    }
+  }, [disabled, time]);
+
   return (
     <div className="typing-game">
       <Container>
@@ -53,6 +83,8 @@ function App() {
           disabled={disabled}
           time={time}
           handleInput={handleInput}
+          handleStart={handleStart}
+          animation={animation}
         />
       </Container>
       <Results
